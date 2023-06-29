@@ -1,15 +1,7 @@
+import java.util.stream.IntStream;
+
 class Solution {
     public int[] solution(int n) {
-        int arrSize = (int)Math.ceil(n/2f);
-        int[] answer = new int[arrSize];
-        int j = 0;
-        
-        for (int i=0; i<=n; i++) {
-            if (i % 2 != 0) {
-                answer[j] = i;
-                j++;
-            }
-        }
-        return answer;
+        return IntStream.rangeClosed(0, n).filter(value -> value % 2 == 1).toArray();
     }
 }
