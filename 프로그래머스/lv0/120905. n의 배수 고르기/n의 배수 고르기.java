@@ -1,5 +1,4 @@
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(int n, int[] numlist) {
