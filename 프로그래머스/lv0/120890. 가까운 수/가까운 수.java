@@ -20,8 +20,7 @@ class Solution {
         int prevInt = intList.get(intList.indexOf(n) - 1);
         int postInt = intList.get(intList.indexOf(n) + 1);
         
-        answer = (n - prevInt) > (postInt - n) ? postInt : prevInt;
+        return (n - prevInt) > (postInt - n) ? postInt : prevInt;
         
-        return answer;
     }
 }
