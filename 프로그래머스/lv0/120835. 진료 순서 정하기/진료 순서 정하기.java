@@ -12,8 +12,6 @@ class Solution {
             answer[i] = num;
             num = 1;
          }
-        
-        
         return answer;
     }
 }
