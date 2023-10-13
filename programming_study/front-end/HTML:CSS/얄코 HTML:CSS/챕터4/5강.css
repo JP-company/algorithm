@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+
+#first {
+  font-family: 'Gugi', cursive;
+}
+
+@font-face {
+  font-family: "MyNotoSans";
+  src: url(./5강_fonts/NotoSansKR-Regular.otf);
+}
+
+@font-face {
+  font-family: "MyNotoSans";
+  font-weight: 100;
+  src: url(./5강_fonts/NotoSansKR-Thin.otf);
+}
+
+@font-face {
+  font-family: "MyNotoSans";
+  font-weight: 300;
+  src: url(./5강_fonts/NotoSansKR-Light.otf);
+}
+
+@font-face {
+  font-family: "MyNotoSans";
+  font-weight: 500;
+  src: url(./5강_fonts/NotoSansKR-Medium.otf);
+}
+
+@font-face {
+  font-family: "MyNotoSans";
+  font-weight: 700;
+  src: url(./5강_fonts/NotoSansKR-Bold.otf);
+}
+
+@font-face {
+  font-family: "MyNotoSans";
+  font-weight: 900;
+  src: url(./5강_fonts/NotoSansKR-Black.otf);
+}

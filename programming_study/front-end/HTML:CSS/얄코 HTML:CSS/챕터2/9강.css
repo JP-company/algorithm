@@ -1,0 +1,15 @@
+div.b {
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  margin: 0;
+  position: sticky;
+  top:0;
+}
+
+div {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+  margin: 0;
+}
