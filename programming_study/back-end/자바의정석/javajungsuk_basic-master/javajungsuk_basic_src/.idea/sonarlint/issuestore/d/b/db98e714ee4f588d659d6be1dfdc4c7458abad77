@@ -1,14 +1,0 @@
-
-g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¯È˜£ÿÿÿÿÿ
-g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(â„–Üıÿÿÿÿ
-b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÓÆƒ‰
-0
-java:S1220""Move this file to a named package.
-L
-java:S1854"6Remove this useless assignment to local variable "d2".(Ğì›’
-Q
-java:S1854"6Remove this useless assignment to local variable "d1".(Ûúâıÿÿÿÿ
-B
-java:S1481"'Remove this unused "d1" local variable.(Ûúâıÿÿÿÿ
-=
-java:S1481"'Remove this unused "d2" local variable.(Ğì›’
