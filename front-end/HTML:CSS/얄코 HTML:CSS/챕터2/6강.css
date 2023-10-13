@@ -1,0 +1,34 @@
+p {
+  background-color: lightblue;
+  margin: 0 0 24px 0;
+  padding: 24px;
+}
+
+p.special {
+  margin-top: 48px;
+  /* margin-bottom: */
+  /* margin-left: */
+  /* margin-right: */
+
+  /* padding-top */
+  /* padding-bottom */
+  /* padding-left */
+  /* padding-right */
+}
+
+
+div {
+  display: inline;
+  width: 20vmax;
+  height: 200px;
+  background-color: orangered;
+  margin: 20px auto ;  
+}
+
+ul > li:not(L) {
+  border-bottom: 1px solid black;
+}
+
+ul > li:last-child {
+  border-bottom: 0;
+}
