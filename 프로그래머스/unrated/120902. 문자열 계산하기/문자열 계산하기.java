@@ -5,7 +5,6 @@ class Solution {
         for (int i=0; i<strArr.length; i++) {
             if (i % 2 == 1) {
                 if (strArr[i].equals("+")) {
-                    System.out.println(strArr[i]);
                     answer += Integer.parseInt(strArr[i+1]);
                 } else {
                     answer -= Integer.parseInt(strArr[i+1]);
