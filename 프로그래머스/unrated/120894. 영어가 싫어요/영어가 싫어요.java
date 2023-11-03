@@ -17,11 +17,9 @@ class Solution {
         replaceMap.put("nine", "9");
         
         for (Map.Entry<String, String> entry : replaceMap.entrySet()) {
-            if (numbers.contains(entry.getKey())) {
-                numbers = numbers.replaceAll(entry.getKey(), entry.getValue());
-            }
+            numbers = numbers.replaceAll(entry.getKey(), entry.getValue());
         }
-        System.out.println(numbers);
+
         return Long.parseLong(numbers);
     }
 }
