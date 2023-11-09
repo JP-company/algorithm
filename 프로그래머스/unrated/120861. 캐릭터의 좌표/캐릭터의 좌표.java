@@ -3,13 +3,11 @@ import java.util.Arrays;
 class Solution {
     public int[] solution(String[] keyinput, int[] board) {
         int[] answer = new int[2];
+        
         final int limitTop = board[0] / 2;
         final int limitBottom = -board[0] / 2;
-        
         final int limitRight = board[1] / 2;
         final int limitLeft = -board[1] / 2;
-        int x = 0;
-        int y = 0;
         
         Arrays.stream(keyinput)
             .filter(input -> input.startsWith("u") || input.startsWith("d"))
@@ -28,7 +26,6 @@ class Solution {
                 answer[0] = answer[0] > limitTop ? --answer[0] : answer[0];
                 answer[0] = answer[0] < limitBottom ? ++answer[0] : answer[0];
             });
-        
         
         return answer;
     }
