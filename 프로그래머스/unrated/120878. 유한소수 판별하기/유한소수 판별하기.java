@@ -1,6 +1,5 @@
 class Solution {
     public int solution(int a, int b) {
-        int answer = 0;
         
         int big = max(a, b);
         int small = min(a, b);
@@ -8,7 +7,7 @@ class Solution {
         
         b /= greatestCommonFactor;
         
-        while (b > 0) {
+        while (true) {
             boolean two = b % 2 == 0;
             boolean five = b % 5 == 0;
             if (two || five) {
@@ -26,12 +25,6 @@ class Solution {
             return 2;
         }
         
-        
-        
-        
-        
-        
-        return answer;
     }
     
     private int getGreatestCommonFactor(int a, int b) {
