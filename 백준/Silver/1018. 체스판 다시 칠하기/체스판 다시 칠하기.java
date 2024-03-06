@@ -26,38 +26,22 @@ public class Main {
     }
     
     public static int min(char[][] chess, int x, int y) {
-        int count1 = 0;
+        int count = 0;
         for (int i=x; i<x+8; i++) {
             if (i % 2 == 0) {
                 for (int j=y; j<y+8; j++) {
                     char ch = j % 2 == 0 ? 'W' : 'B';
-                    if (chess[i][j] != ch) count1++;
+                    if (chess[i][j] != ch) count++;
                 }
                 continue;
             }
             
             for (int j=y; j<y+8; j++) {
                 char ch = j % 2 == 0 ? 'B' : 'W';
-                if (chess[i][j] != ch) count1++;
+                if (chess[i][j] != ch) count++;
             }
         }
         
-        int count2 = 0;
-        for (int i=x; i<x+8; i++) {
-            if (i % 2 == 0) {
-                for (int j=y; j<y+8; j++) {
-                    char ch = j % 2 == 0 ? 'B' : 'W';
-                    if (chess[i][j] != ch) count2++;
-                }
-                continue;
-            }
-            
-            for (int j=y; j<y+8; j++) {
-                char ch = j % 2 == 0 ? 'W' : 'B';
-                if (chess[i][j] != ch) count2++;
-            }
-        }
-        
-        return count1 < count2 ? count1 : count2;
+        return count < 64 - count ? count : 64 - count;
     }
 }
