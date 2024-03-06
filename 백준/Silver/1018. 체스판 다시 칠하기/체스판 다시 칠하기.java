@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,12 +7,12 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
         
-        char[][] chess = new char[N][M];
+        boolean[][] chess = new boolean[N][M];
         
         for (int i=0; i<N; i++) {
             String line = sc.next();
             for (int j=0; j<M; j++) {
-                chess[i][j] = line.charAt(j);
+                chess[i][j] = line.charAt(j) == 'W';
             }
         }
         
@@ -19,29 +20,24 @@ public class Main {
         for (int i=0; i<N-7; i++) {
             for (int j=0; j<M-7; j++) {
                 int min = min(chess, i, j);
-                answer = (answer < min) ? answer : min;
+                answer = Math.min(answer, min);
             }
         }
         System.out.println(answer);
     }
     
-    public static int min(char[][] chess, int x, int y) {
+    public static int min(boolean[][] chess, int x, int y) {
+        boolean TF = true;
         int count = 0;
+        
         for (int i=x; i<x+8; i++) {
-            if (i % 2 == 0) {
-                for (int j=y; j<y+8; j++) {
-                    char ch = j % 2 == 0 ? 'W' : 'B';
-                    if (chess[i][j] != ch) count++;
-                }
-                continue;
-            }
-            
             for (int j=y; j<y+8; j++) {
-                char ch = j % 2 == 0 ? 'B' : 'W';
-                if (chess[i][j] != ch) count++;
+                if (chess[i][j] != TF) count++;
+                TF = !TF;
             }
+            TF = !TF;
         }
         
-        return count < 64 - count ? count : 64 - count;
+        return Math.min(count, 64 - count);
     }
 }
