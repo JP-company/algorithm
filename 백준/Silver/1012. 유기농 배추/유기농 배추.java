@@ -5,7 +5,7 @@ public class Main {
     
     static int dirX[] = {0, 0, -1, 1};
     static int dirY[] = {-1, 1, 0, 0};
-    static int[][] map;
+    static boolean[][] map;
     static boolean[][] visit;
     
     static int M, N, K;
@@ -25,7 +25,7 @@ public class Main {
             N = Integer.parseInt(st.nextToken());
             K = Integer.parseInt(st.nextToken());
             
-            map = new int[N][M];
+            map = new boolean[N][M];
             visit = new boolean[N][M];
             
             for (int j=0; j<K; j++) {
@@ -33,13 +33,13 @@ public class Main {
                 int x = Integer.parseInt(st.nextToken());
                 int y = Integer.parseInt(st.nextToken());
                 
-                map[y][x] = 1;
+                map[y][x] = true; // 배추 위치 저장
             }
             
             count = 0;
-            for(int j=0; j<N; j++) {
+            for(int j=0; j<N; j++) {  // 하나씩 돌아다니면서 방문안하고, 배추가 있는 곳 찾기
                 for(int k=0; k<M; k++) {
-                    if (map[j][k] == 1 && visit[j][k] == false) {
+                    if (map[j][k] && !visit[j][k]) {
                         count++;
                         dfs(k, j);
                     }
@@ -54,11 +54,12 @@ public class Main {
     public static void dfs(int x, int y) {
         visit[y][x] = true;
         
-        for(int i=0; i<4; i++) {
-            int now_x = x + dirX[i];
+        for(int i=0; i<4; i++) {  // 4방향 표현
+            int now_x = x + dirX[i]; 
             int now_y = y + dirY[i];
             
-            if (rangeCheck(now_x, now_y) && visit[now_y][now_x] == false && map[now_y][now_x] == 1) {
+            // 밭 범위 안에 있고, 방문 안했고, 배추가 있으면 dfs
+            if (rangeCheck(now_x, now_y) && !visit[now_y][now_x] && map[now_y][now_x]) {
                 dfs(now_x, now_y);
             }
         }
