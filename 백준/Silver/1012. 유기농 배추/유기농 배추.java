@@ -1,71 +1,64 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
     
-    static int dirX[] = {0, 0, -1, 1};
-    static int dirY[] = {-1, 1, 0, 0};
-    static boolean[][] map;
-    static boolean[][] visit;
+    private static boolean[][] map;
+    private static boolean[][] visit;
     
-    static int M, N, K;
-    static int count;
+    private static int M, N, K;
     
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
-        StringTokenizer st;
-        StringBuilder sb = new StringBuilder();
-        
         int testCase = Integer.parseInt(br.readLine());
-        for (int i=0; i<testCase; i++) {
+        StringTokenizer st;
+        
+        for(int i=0; i<testCase; i++) {
             st = new StringTokenizer(br.readLine());
-            
-            M = Integer.parseInt(st.nextToken());
-            N = Integer.parseInt(st.nextToken());
+            M = Integer.parseInt(st.nextToken()); // 가로 x 2
+            N = Integer.parseInt(st.nextToken()); // 세로 y 1
             K = Integer.parseInt(st.nextToken());
             
             map = new boolean[N][M];
             visit = new boolean[N][M];
             
-            for (int j=0; j<K; j++) {
+            for(int j=0; j<K; j++) {
                 st = new StringTokenizer(br.readLine());
                 int x = Integer.parseInt(st.nextToken());
                 int y = Integer.parseInt(st.nextToken());
                 
-                map[y][x] = true; // 배추 위치 저장
+                map[y][x] = true;
             }
             
-            count = 0;
-            for(int j=0; j<N; j++) {  // 하나씩 돌아다니면서 방문안하고, 배추가 있는 곳 찾기
-                for(int k=0; k<M; k++) {
-                    if (map[j][k] && !visit[j][k]) {
+            int count = 0;
+            for(int x=0; x<M; x++) {
+                for(int y=0; y<N; y++) {
+                    if (map[y][x] && !visit[y][x]) {
                         count++;
-                        dfs(k, j);
+                        dfs(x, y);
                     }
                 }
             }
-            sb.append(count).append('\n');            
+            System.out.println(count);
         }
-        
-        System.out.println(sb);
     }
     
-    public static void dfs(int x, int y) {
+    private static void dfs(int x, int y) {
         visit[y][x] = true;
+        int[] dirX = {0, 0, -1, 1};
+        int[] dirY = {1, -1, 0, 0};
         
-        for(int i=0; i<4; i++) {  // 4방향 표현
-            int now_x = x + dirX[i]; 
-            int now_y = y + dirY[i];
+        for (int i=0; i<4; i++) {
+            int nowX = x + dirX[i];
+            int nowY = y + dirY[i];
             
-            // 밭 범위 안에 있고, 방문 안했고, 배추가 있으면 dfs
-            if (rangeCheck(now_x, now_y) && !visit[now_y][now_x] && map[now_y][now_x]) {
-                dfs(now_x, now_y);
+            if (nowX >= 0 && nowX < M && nowY >= 0 && nowY < N) {
+                if (!visit[nowY][nowX] && map[nowY][nowX]) {
+                    dfs(nowX, nowY);
+                }
             }
         }
-    }
-    
-    public static boolean rangeCheck(int x, int y) {
-        return y < N && y >= 0 && x < M && x >= 0;
+        
     }
 }
