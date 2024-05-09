@@ -1,62 +1,64 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
+
 import java.util.StringTokenizer;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Main {
-    private static int[] dirX = {0, 0, -1, 1};
-    private static int[] dirY = {-1, 1, 0, 0};
-
-    private static int[] arr;
-    private static int[][] map;
+    
+    private static final int size = 5;
+    private static final int maxDepth = 6;
+    private static final int[] dirA = {0, 0, -1, 1};
+    private static final int[] dirB = {-1, 1, 0, 0};
 
     private static Set<String> set;
+    private static int[][] map;
+    private static int[] arr;
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int size = 5;
         map = new int[size][size];
+        arr = new int[maxDepth];
+        set = new HashSet<>();
+
         for (int i=0; i<size; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
+
             for (int j=0; j<size; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-
-        set = new HashSet<>();
-        arr = new int[6];
 
         for (int i=0; i<size; i++) {
             for (int j=0; j<size; j++) {
                 dfs(i, j, 1);
             }
         }
-
         System.out.println(set.size());
     }
 
-    private static void dfs(int x, int y, int count) {
-        if (count > 6) {
+    private static void dfs(int a, int b, int depth) {
+        if (depth > maxDepth) {
             StringBuilder sb = new StringBuilder();
-
-            for(int i=0; i<arr.length; i++) {
+            for (int i=0; i<maxDepth; i++) {
                 sb.append(arr[i]);
             }
             set.add(sb.toString());
             return;
         }
 
-        arr[count-1] = map[x][y];
+        arr[depth-1] = map[a][b];
 
         for (int i=0; i<4; i++) {
-            int nowX = x + dirX[i];
-            int nowY = y + dirY[i];
+            int nowA = a + dirA[i];
+            int nowB = b + dirB[i];
 
-            if (nowX>=0 && nowX<5 && nowY>=0 && nowY<5) {
-                dfs(nowX, nowY, count+1);
+            if(nowA>=0 && nowA<size && nowB>=0 && nowB<size) {
+                dfs(nowA, nowB, depth+1);
             }
         }
     }
